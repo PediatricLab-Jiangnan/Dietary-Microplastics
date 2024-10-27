@@ -113,28 +113,28 @@ if(nrow(CBC_duplicates) > 0){
 head(CBC)
 cat("Number of records in CBC:", nrow(CBC), "\n")
 
-# ---- Read and Process HDL Data ----
+# ---- Read and Process Cholesterol Data ----
 
-# Read the P_HDL.XPT data file for HDL Cholesterol levels
-HDL <- read_xpt("P_HDL.XPT") %>% 
-  select(SEQN, LBDHDD) # Select SEQN and HDL level (LBDHDD)
+# Read the P_TCHOL.XPT data file for Cholesterol levels
+Cholesterol <- read_xpt("P_TCHOL.XPT") %>% 
+  select(SEQN, LBXTC) # Select SEQN and Cholesterol level (LBXTC)
 
-# Check for duplicate SEQN entries in HDL data
-HDL_duplicates <- HDL %>% 
+# Check for duplicate SEQN entries in Cholesterol data
+Cholesterol_duplicates <- Cholesterol %>% 
   group_by(SEQN) %>% 
   filter(n() > 1) %>% 
   ungroup()
 
-if(nrow(HDL_duplicates) > 0){
-  cat("Duplicates found in HDL data. Processing duplicates...\n")
+if(nrow(Cholesterol_duplicates) > 0){
+  cat("Duplicates found in Cholesterol data. Processing duplicates...\n")
   # Retain only the first occurrence of each SEQN
-  HDL <- HDL %>%
+  Cholesterol <- Cholesterol %>%
     distinct(SEQN, .keep_all = TRUE)
 }
 
-# View the first few rows of the processed HDL data
-head(HDL)
-cat("Number of records in HDL:", nrow(HDL), "\n")
+# View the first few rows of the processed Cholesterol data
+head(Cholesterol)
+cat("Number of records in Cholesterol:", nrow(Cholesterol), "\n")
 
 # ============================
 # Merge All Data Sets
@@ -150,10 +150,10 @@ merged_data <- merged_data %>%
   inner_join(CBC, by = "SEQN")
 cat("Number of records after merging with CBC data:", nrow(merged_data), "\n")
 
-# ---- Merge with HDL Data ----
+# ---- Merge with Cholesterol Data ----
 merged_data <- merged_data %>%
-  inner_join(HDL, by = "SEQN")
-cat("Number of records after merging with HDL data:", nrow(merged_data), "\n")
+  inner_join(Cholesterol, by = "SEQN")
+cat("Number of records after merging with Cholesterol data:", nrow(merged_data), "\n")
 
 # View the final merged data
 head(merged_data)
