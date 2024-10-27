@@ -19,7 +19,7 @@ mycol <- colorRampPalette(c("#0da9ce", "white", "#e74a32"))(100)
 # ---------------------------
 
 # Set the working directory using forward slashes to avoid escape character issues
-setwd("C:/Users/xieandfanfan/Desktop/dietarymicro/humanblood")
+setwd("C:/Users/ruiandfan/Desktop/dietarymicro/humanblood")
 
 # Read the gene expression data from a CSV file
 dt <- read.csv('humanblood.csv', stringsAsFactors = FALSE)
