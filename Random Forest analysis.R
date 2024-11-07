@@ -4,8 +4,8 @@ library(ggplot2)
 library(ggthemes)
 
 # 1. Set file paths (avoid using setwd for better portability)
-data_file <- "C:/Users/Ruiandxiaozhongzhong/Desktop/Microplastics/Count.csv"
-output_dir <- "C:/Users/Ruiandxiaozhongzhong/Desktop/Microplastics/Output"
+data_file <- "C:/Users/RuiRui/Desktop/Microplastics/Count.csv"
+output_dir <- "C:/Users/RuiRui/Desktop/Microplastics/Output"
 
 # Create output directory if it doesn't exist
 if (!dir.exists(output_dir)) {
