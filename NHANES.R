@@ -67,30 +67,6 @@ cat("Number of records in merged_data after merging demo1 and med1_filtered:", n
 # Read and Process Laboratory Data
 # ============================
 
-# ---- Read and Process IRON Data ----
-
-# Read the P_FETIB.XPT data file for Iron levels
-iron <- read_xpt("P_FETIB.XPT")
-iron <- iron %>% 
-  select(SEQN, LBXIRN) # Select SEQN and Iron level (LBXIRN)
-
-# Check for duplicate SEQN entries in iron data
-iron_duplicates <- iron %>% 
-  group_by(SEQN) %>% 
-  filter(n() > 1) %>% 
-  ungroup()
-
-if(nrow(iron_duplicates) > 0){
-  cat("Duplicates found in IRON data. Processing duplicates...\n")
-  # Retain only the first occurrence of each SEQN
-  iron <- iron %>%
-    distinct(SEQN, .keep_all = TRUE)
-}
-
-# View the first few rows of the processed iron data
-head(iron)
-cat("Number of records in iron:", nrow(iron), "\n")
-
 # ---- Read and Process CBC Data ----
 
 # Read the P_CBC.XPT data file for Complete Blood Count (CBC)
@@ -139,11 +115,6 @@ cat("Number of records in Cholesterol:", nrow(Cholesterol), "\n")
 # ============================
 # Merge All Data Sets
 # ============================
-
-# ---- Merge with IRON Data ----
-merged_data <- merged_data %>%
-  inner_join(iron, by = "SEQN")
-cat("Number of records after merging with IRON data:", nrow(merged_data), "\n")
 
 # ---- Merge with CBC Data ----
 merged_data <- merged_data %>%
