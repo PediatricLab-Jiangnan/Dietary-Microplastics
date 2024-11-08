@@ -9,7 +9,7 @@ library(corrplot)  # For creating correlation plots
 # ---------------------------
 
 # Use forward slashes to avoid escape character issues
-setwd("C:/Users/Ruiandxiaozhongzhong/Desktop/Microplastics/corr")
+setwd("C:/Users/RuiRui/Desktop/Microplastics/corr")
 
 # ---------------------------
 # 3. Load and Prepare the Data
