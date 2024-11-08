@@ -16,7 +16,7 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 # Set Working Directory
 # -------------------------------
 # Change this path to your specific working directory
-os.chdir("C:\\Users\\Ruiandxiaozhongzhong\\Desktop\\Microplastics\\nhanes2023\\2017-2020")
+os.chdir("C:\\Users\\RuiRui\\Desktop\\Microplastics\\nhanes2023\\2017-2020")
 
 # -------------------------------
 # Load the Dataset
