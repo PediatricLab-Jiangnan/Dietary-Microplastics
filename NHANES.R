@@ -2,7 +2,7 @@
 rm(list = ls())
 
 # Set the working directory
-setwd("C:\\Users\\RuiandFan\\nhanes2020") # Set working directory
+setwd("C:\\Users\\RuiRui\\nhanes2020") # Set working directory
 
 # Load necessary libraries
 library(haven)
